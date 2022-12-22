@@ -26,7 +26,7 @@ function onTimerStart(selectedDates) {
       let dateNow = new Date().getTime();
       const deltaTime = dateSelected - dateNow;
       const countdownObj = addLeadingZero(convertMs(deltaTime));
-
+      console.log(countdownObj);
       daysEl.textContent = `${countdownObj.days}`;
       hoursEl.textContent = `${countdownObj.hours}`;
       minutesEl.textContent = `${countdownObj.minutes}`;
@@ -48,7 +48,7 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    if (selectedDates[0] <= options.defaultDate) {
+    if (selectedDates[0] < options.defaultDate) {
       startButtonEl.setAttribute('disabled', '');
       return Notiflix.Notify.failure('Please choose a date in the future', {
         timeout: 1000,
@@ -83,7 +83,7 @@ function convertMs(ms) {
 
 function addLeadingZero(value) {
   let counterObj = {};
-  for (key in value) {
+  for (let key in value) {
     counterObj[key] = value[key].toString().padStart(2, '0');
   }
   return counterObj;
