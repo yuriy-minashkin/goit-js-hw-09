@@ -26,7 +26,7 @@ function onTimerStart(selectedDates) {
       let dateNow = new Date().getTime();
       const deltaTime = dateSelected - dateNow;
       const countdownObj = addLeadingZero(convertMs(deltaTime));
-      console.log(countdownObj);
+
       daysEl.textContent = `${countdownObj.days}`;
       hoursEl.textContent = `${countdownObj.hours}`;
       minutesEl.textContent = `${countdownObj.minutes}`;
